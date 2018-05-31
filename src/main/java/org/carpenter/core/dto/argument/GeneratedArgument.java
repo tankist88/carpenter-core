@@ -9,6 +9,8 @@ public class GeneratedArgument extends AbstractArgument {
     private ProviderResult generated;
     private List<String> interfacesHierarchy;
     private String genericString;
+    private boolean anonymousClass;
+    private String nearestInstantAbleClass;
 
     public GeneratedArgument(String className, ProviderResult generated) {
         super(className);
@@ -37,6 +39,22 @@ public class GeneratedArgument extends AbstractArgument {
 
     public void setGenericString(String genericString) {
         this.genericString = genericString;
+    }
+
+    public boolean isAnonymousClass() {
+        return anonymousClass;
+    }
+
+    public void setAnonymousClass(boolean anonymousClass) {
+        this.anonymousClass = anonymousClass;
+    }
+
+    public String getNearestInstantAbleClass() {
+        return nearestInstantAbleClass;
+    }
+
+    public void setNearestInstantAbleClass(String nearestInstantAbleClass) {
+        this.nearestInstantAbleClass = nearestInstantAbleClass;
     }
 
     @Override

@@ -13,24 +13,23 @@ public class TypeHelper {
     }
 
     public static String getMethodArgGenericTypeStr(List<Class> classHierarchy, String methodName, int argNum, Class<?>... args) throws NoSuchMethodException {
-        return classListAsString(getMethodArgGenericTypes(classHierarchy, methodName, argNum, args), true);
+        return classListAsString(getMethodArgGenericTypes(classHierarchy, methodName, argNum, args));
     }
 
     public static String getFieldGenericTypeStr(Field field) {
-        return classListAsString(getParameterizedTypes(field.getGenericType()), false);
+        return classListAsString(getParameterizedTypes(field.getGenericType()));
     }
 
-    private static String classListAsString(List<Class> genericTypes, boolean useObjectForEmpty) {
-        StringBuilder gTypeNameBuilder = new StringBuilder();
+    private static String classListAsString(List<Class> genericTypes) {
         if(genericTypes.size() > 0) {
+            StringBuilder gTypeNameBuilder = new StringBuilder();
             Iterator iterator = genericTypes.iterator();
             while (iterator.hasNext()) {
                 gTypeNameBuilder.append(clearClassName(((Class) iterator.next()).getName()));
                 if(iterator.hasNext()) gTypeNameBuilder.append(", ");
             }
-        } else if(useObjectForEmpty) {
-            gTypeNameBuilder.append(Object.class.getName());
+            return gTypeNameBuilder.toString();
         }
-        return gTypeNameBuilder.toString();
+        return null;
     }
 }
