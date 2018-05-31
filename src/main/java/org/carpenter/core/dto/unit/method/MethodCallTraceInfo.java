@@ -5,17 +5,8 @@ import org.carpenter.core.dto.trace.TraceAnalyzeDto;
 import java.util.Objects;
 
 public class MethodCallTraceInfo extends MethodCallInfo {
-    private int valueArgumentsHashCode;
     private TraceAnalyzeDto traceAnalyzeData;
     private String key;
-
-    public int getValueArgumentsHashCode() {
-        return valueArgumentsHashCode;
-    }
-
-    public void setValueArgumentsHashCode(int valueArgumentsHashCode) {
-        this.valueArgumentsHashCode = valueArgumentsHashCode;
-    }
 
     public TraceAnalyzeDto getTraceAnalyzeData() {
         return traceAnalyzeData;
@@ -51,8 +42,7 @@ public class MethodCallTraceInfo extends MethodCallInfo {
     @Override
     public String toString() {
         return "MethodCallTraceInfo{" +
-                "valueArgumentsHashCode=" + valueArgumentsHashCode +
-                ", traceAnalyzeData=" + traceAnalyzeData +
+                "traceAnalyzeData=" + traceAnalyzeData +
                 ", key='" + key + '\'' +
                 "} " + super.toString();
     }
