@@ -2,7 +2,8 @@ package org.carpenter.core.property;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.IOException;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -13,7 +14,18 @@ class FileGenerationProperties extends AbstractGenerationProperties {
     FileGenerationProperties() {
         try {
             Properties prop = new Properties();
-            prop.load(this.getClass().getClassLoader().getResourceAsStream(PROPERTY_FILE));
+
+            String jarFilePath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getPath();
+            File propFile = new File(jarFilePath, PROPERTY_FILE);
+
+            if(propFile.exists()) {
+                // use by generator
+                prop.load(new FileInputStream(propFile));
+            } else {
+                // use by collector
+                prop.load(this.getClass().getClassLoader().getResourceAsStream(PROPERTY_FILE));
+            }
+
             this.utGenDir = prop.getProperty("ut.gen.dir");
             if (StringUtils.isBlank(this.utGenDir) || this.utGenDir.equals("tmp")) {
                 this.utGenDir = System.getProperty("java.io.tmpdir") + "/ut_gen";
@@ -29,7 +41,7 @@ class FileGenerationProperties extends AbstractGenerationProperties {
             if (this.objectDumpDir == null || this.objectDumpDir.equals("tmp")) {
                 this.objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";
             }
-        } catch (IOException iex) {
+        } catch (Exception iex) {
             iex.printStackTrace();
         }
     }
