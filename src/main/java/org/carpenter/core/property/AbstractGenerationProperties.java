@@ -12,6 +12,7 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     String[] allowedPackagesForTests;
     String[] excludedPackagesForDp;
     String[] excludedPackagesForTraceCollect;
+    String[] externalExtensionClassNames;
     String objectDumpDir;
 
     @Override
@@ -42,5 +43,9 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public String getObjectDumpDir() {
         return objectDumpDir;
+    }
+    @Override
+    public String[] getExternalExtensionClassNames() {
+        return externalExtensionClassNames;
     }
 }

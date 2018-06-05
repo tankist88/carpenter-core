@@ -9,6 +9,9 @@ import java.util.Objects;
 import java.util.Set;
 
 public class MethodCallInfo extends MethodBaseInfo {
+    //common attributes
+    private long callTime;
+
     // class attributes
     private String declaringTypeName;
     private int classModifiers;
@@ -115,6 +118,14 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.innerMethods = innerMethods;
     }
 
+    public long getCallTime() {
+        return callTime;
+    }
+
+    public void setCallTime(long callTime) {
+        this.callTime = callTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -137,7 +148,8 @@ public class MethodCallInfo extends MethodBaseInfo {
     @Override
     public String toString() {
         return "MethodCallInfo{" +
-                "declaringTypeName='" + declaringTypeName + '\'' +
+                "callTime=" + callTime +
+                ", declaringTypeName='" + declaringTypeName + '\'' +
                 ", classModifiers=" + classModifiers +
                 ", classHierarchy=" + classHierarchy +
                 ", interfacesHierarchy=" + interfacesHierarchy +

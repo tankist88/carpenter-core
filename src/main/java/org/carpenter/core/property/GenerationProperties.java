@@ -33,4 +33,9 @@ public interface GenerationProperties {
      * @return Arrays of packages to be excluded by object dump collector.
      */
     String[] getExcludedPackagesForTraceCollect();
+    /**
+     * Get external extensions class names
+     * @return Arrays of external extensions class names
+     */
+    String[] getExternalExtensionClassNames();
 }

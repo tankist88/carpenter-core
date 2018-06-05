@@ -37,6 +37,7 @@ class FileGenerationProperties extends AbstractGenerationProperties {
             allowedPackagesForTests = getArrayProperty(prop, "test.generation.allowed.packages");
             excludedPackagesForDp = getArrayProperty(prop, "data.providers.excluded.packages");
             excludedPackagesForTraceCollect = getArrayProperty(prop, "trace.collect.excluded.packages");
+            externalExtensionClassNames = getArrayProperty(prop, "external.extension.class.names");
             this.objectDumpDir = (String) prop.get("object.dump.dir");
             if (this.objectDumpDir == null || this.objectDumpDir.equals("tmp")) {
                 this.objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";
