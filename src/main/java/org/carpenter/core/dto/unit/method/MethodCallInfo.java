@@ -18,6 +18,7 @@ public class MethodCallInfo extends MethodBaseInfo {
     private List<String> classHierarchy;
     private List<String> interfacesHierarchy;
     private List<FieldProperties> serviceFields;
+    private boolean classHasZeroArgConstructor;
 
     // method attributes
     private int methodModifiers;
@@ -126,6 +127,14 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.callTime = callTime;
     }
 
+    public boolean isClassHasZeroArgConstructor() {
+        return classHasZeroArgConstructor;
+    }
+
+    public void setClassHasZeroArgConstructor(boolean classHasZeroArgConstructor) {
+        this.classHasZeroArgConstructor = classHasZeroArgConstructor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -154,6 +163,7 @@ public class MethodCallInfo extends MethodBaseInfo {
                 ", classHierarchy=" + classHierarchy +
                 ", interfacesHierarchy=" + interfacesHierarchy +
                 ", serviceFields=" + serviceFields +
+                ", classHasZeroArgConstructor=" + classHasZeroArgConstructor +
                 ", methodModifiers=" + methodModifiers +
                 ", isVoidMethod=" + isVoidMethod +
                 ", isMemberClass=" + isMemberClass +
