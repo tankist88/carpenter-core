@@ -18,6 +18,16 @@ public interface GenerationProperties {
      */
     String[] getAllowedPackagesForTests();
     /**
+     * Array of classes that will be used for collecting trace data
+     * @return array of elements, for example: org.package.one.One, org.package.two.Two.
+     */
+    String[] getAllowedClassesForTraceCollect();
+    /**
+     * Array of packages to be excluded by trace collector.
+     * @return Array of packages to be excluded by trace collector.
+     */
+    String[] getExcludedPackagesForTraceCollect();
+    /**
      * Array of packages to be excluded by source generator of data providers.
      * For classes in this packages source generator create method which return null.
      * @return Array of packages to be excluded by source generator of data providers.
@@ -28,11 +38,6 @@ public interface GenerationProperties {
      * @return Path to directory for trace collector object dumps.
      */
     String getObjectDumpDir();
-    /**
-     * Arrays of packages to be excluded by object dump collector.
-     * @return Arrays of packages to be excluded by object dump collector.
-     */
-    String[] getExcludedPackagesForTraceCollect();
     /**
      * Get external extensions class names
      * @return Arrays of external extensions class names

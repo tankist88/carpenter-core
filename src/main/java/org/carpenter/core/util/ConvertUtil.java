@@ -35,24 +35,28 @@ public class ConvertUtil {
         List<FieldProperties> result = new ArrayList<>();
         Set<FieldBaseInfo> serviceClasses = new HashSet<>();
         for(Field f : fields) {
-            boolean deniedModifier =
-                    Modifier.isStatic(f.getModifiers()) ||
-                    Modifier.isFinal(f.getModifiers()) ||
-                    Modifier.isNative(f.getModifiers()) ||
-                    Modifier.isPrivate(f.getType().getModifiers());
-            boolean deniedType =
-                    isPrimitive(f.getType().getName()) ||
-                    isWrapper(f.getType().getName()) ||
-                    f.getType().getName().equals(Class.class.getName()) ||
-                    f.getType().getName().equals(String.class.getName()) ||
-                    f.getType().isArray() ||
-                    f.getType().isEnum();
             FieldBaseInfo fieldBaseInfo = new FieldBaseInfo(f.getType().getName(), f.getName());
-            if (!deniedModifier && !deniedType && !serviceClasses.contains(fieldBaseInfo)) {
+            if (allowedField(f) && !serviceClasses.contains(fieldBaseInfo)) {
                 serviceClasses.add(fieldBaseInfo);
                 result.add(toFieldProperties(f));
             }
         }
         return result;
+    }
+
+    public static boolean allowedField(Field f) {
+        boolean deniedModifier =
+                Modifier.isStatic(f.getModifiers()) ||
+                Modifier.isNative(f.getModifiers()) ||
+                Modifier.isPrivate(f.getType().getModifiers());
+        boolean deniedType =
+                isPrimitive(f.getType().getName()) ||
+                isWrapper(f.getType().getName()) ||
+                f.getType().getName().equals(Class.class.getName()) ||
+                f.getType().getName().equals(String.class.getName()) ||
+                f.getType().getName().startsWith("java") ||
+                f.getType().isArray() ||
+                f.getType().isEnum();
+        return !deniedModifier && !deniedType;
     }
 }

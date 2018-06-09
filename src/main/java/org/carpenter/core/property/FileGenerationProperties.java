@@ -11,7 +11,8 @@ import java.util.Properties;
 class FileGenerationProperties extends AbstractGenerationProperties {
     private static final String PROPERTY_FILE = "carpenter.properties";
 
-    FileGenerationProperties() {
+    @Override
+    public void loadProps() {
         try {
             Properties prop = new Properties();
 
