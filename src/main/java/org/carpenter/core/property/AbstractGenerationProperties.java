@@ -2,6 +2,7 @@ package org.carpenter.core.property;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.*;
@@ -28,15 +29,19 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     String objectDumpDir;
 
     AbstractGenerationProperties() {
-        loadProps();
+        this(null);
+    }
+
+    AbstractGenerationProperties(InputStream inputStream) {
         try {
+            loadProps(inputStream);
             fillAllowedClassesForTests();
         } catch (Exception ex) {
             throw new IllegalStateException(ex);
         }
     }
 
-    public abstract void loadProps();
+    public abstract void loadProps(InputStream inputStream) throws Exception;
 
     private void fillAllowedClassesForTests() throws IOException, ClassNotFoundException {
         Set<String> allowedClassesForTraceCollect = new HashSet<>();

@@ -1,7 +1,12 @@
 package org.carpenter.core.property;
 
+import org.dom4j.*;
+import org.dom4j.io.SAXReader;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,6 +36,7 @@ public class GenerationPropertiesFactoryTest {
                 "org.carpenter.core.property.AbstractGenerationProperties",
                 "org.carpenter.core.dto.unit.method.MethodCallTraceInfo",
                 "org.carpenter.core.property.FileGenerationProperties",
+                "org.carpenter.core.property.XmlGenerationProperties",
                 "org.carpenter.core.property.GenerationPropertiesFactory",
                 "org.carpenter.core.dto.trace.TraceAnalyzeDto",
                 "org.carpenter.core.property.GenerationProperties",
@@ -62,6 +68,7 @@ public class GenerationPropertiesFactoryTest {
                 "org.carpenter.core.property.AbstractGenerationProperties",
                 "org.carpenter.core.dto.unit.method.MethodCallTraceInfo",
                 "org.carpenter.core.property.FileGenerationProperties",
+                "org.carpenter.core.property.XmlGenerationProperties",
                 "org.carpenter.core.property.GenerationPropertiesFactory",
                 "org.carpenter.core.dto.trace.TraceAnalyzeDto",
                 "org.carpenter.core.property.GenerationProperties",
