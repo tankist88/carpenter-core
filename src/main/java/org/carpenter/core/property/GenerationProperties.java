@@ -43,4 +43,9 @@ public interface GenerationProperties {
      * @return Arrays of external extensions class names
      */
     String[] getExternalExtensionClassNames();
+    /**
+     * Get external assert extensions class names for unit test generation
+     * @return Arrays of external extensions class names
+     */
+    String[] getExternalAssertExtensionClassNames();
 }

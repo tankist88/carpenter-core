@@ -24,6 +24,7 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     String[] excludedPackagesForDp;
     String[] excludedPackagesForTraceCollect;
     String[] externalExtensionClassNames;
+    String[] externalAssertExtensionClassNames;
     String objectDumpDir;
 
     AbstractGenerationProperties() {
@@ -153,5 +154,10 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public String[] getExcludedPackagesForTraceCollect() {
         return excludedPackagesForTraceCollect;
+    }
+
+    @Override
+    public String[] getExternalAssertExtensionClassNames() {
+        return externalAssertExtensionClassNames;
     }
 }
