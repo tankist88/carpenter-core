@@ -25,10 +25,11 @@ class FileGenerationProperties extends AbstractGenerationProperties {
             this.dataProviderClassPattern = DEFAULT_DATA_PROVIDER_CLASS_PATTERN;
         }
         allowedPackagesForTests = getArrayProperty(prop, "test.generation.allowed.packages");
-        excludedPackagesForDp = getArrayProperty(prop, "data.providers.excluded.packages");
+        allowedPackagesForDp = getArrayProperty(prop, "data.providers.allowed.packages");
         excludedPackagesForTraceCollect = getArrayProperty(prop, "trace.collect.excluded.packages");
         externalExtensionClassNames = getArrayProperty(prop, "external.extension.class.names");
         externalAssertExtensionClassNames = getArrayProperty(prop, "external.assert.extension.class.names");
+        excludedThreadNames = getArrayProperty(prop, "excluded.thread.names");
         this.objectDumpDir = (String) prop.get("object.dump.dir");
         if (this.objectDumpDir == null || this.objectDumpDir.equals("tmp")) {
             this.objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";

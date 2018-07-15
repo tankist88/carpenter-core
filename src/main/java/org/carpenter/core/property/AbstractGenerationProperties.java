@@ -22,10 +22,11 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     String utGenDir;
     String dataProviderClassPattern;
     String[] allowedPackagesForTests;
-    String[] excludedPackagesForDp;
+    String[] allowedPackagesForDp;
     String[] excludedPackagesForTraceCollect;
     String[] externalExtensionClassNames;
     String[] externalAssertExtensionClassNames;
+    String[] excludedThreadNames;
     String objectDumpDir;
 
     AbstractGenerationProperties() {
@@ -138,14 +139,15 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     }
 
     @Override
-    public String[] getExcludedPackagesForDp() {
-        return excludedPackagesForDp;
+    public String[] getAllowedPackagesForDp() {
+        return allowedPackagesForDp;
     }
 
     @Override
     public String getObjectDumpDir() {
         return objectDumpDir;
     }
+
     @Override
     public String[] getExternalExtensionClassNames() {
         return externalExtensionClassNames;
@@ -164,5 +166,9 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public String[] getExternalAssertExtensionClassNames() {
         return externalAssertExtensionClassNames;
+    }
+    @Override
+    public String[] getExcludedThreadNames() {
+        return excludedThreadNames;
     }
 }

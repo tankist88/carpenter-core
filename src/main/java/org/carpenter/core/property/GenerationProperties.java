@@ -28,11 +28,11 @@ public interface GenerationProperties {
      */
     String[] getExcludedPackagesForTraceCollect();
     /**
-     * Array of packages to be excluded by source generator of data providers.
-     * For classes in this packages source generator create method which return null.
-     * @return Array of packages to be excluded by source generator of data providers.
+     * Array of packages to be allowed by source generator of data providers.
+     * For classes in not this packages source generator create method which return null.
+     * @return Array of packages to be allowed by source generator of data providers.
      */
-    String[] getExcludedPackagesForDp();
+    String[] getAllowedPackagesForDp();
     /**
      * Path to directory for trace collector object dumps.
      * @return Path to directory for trace collector object dumps.
@@ -48,4 +48,9 @@ public interface GenerationProperties {
      * @return Arrays of external extensions class names
      */
     String[] getExternalAssertExtensionClassNames();
+    /**
+     * Array of thread names to be excluded by trace collector
+     * @return Array of thread names to be excluded by trace collector
+     */
+    String[] getExcludedThreadNames();
 }

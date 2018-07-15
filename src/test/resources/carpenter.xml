@@ -9,10 +9,10 @@
     <excludedPackagesForTraceCollect>
         <value>sun</value>
     </excludedPackagesForTraceCollect>
-    <excludedPackagesForDp>
+    <allowedPackagesForDp>
         <value>net</value>
         <value>com</value>
-    </excludedPackagesForDp>
+    </allowedPackagesForDp>
     <externalExtensionClassNames>
         <value>org.com.sun.a</value>
         <value>org.com.sun.b</value>

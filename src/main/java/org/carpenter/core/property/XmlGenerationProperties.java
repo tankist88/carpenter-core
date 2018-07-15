@@ -28,10 +28,11 @@ public class XmlGenerationProperties extends AbstractGenerationProperties {
             this.dataProviderClassPattern = DEFAULT_DATA_PROVIDER_CLASS_PATTERN;
         }
         allowedPackagesForTests = getArrayProperty(document, "allowedPackagesForTests");
-        excludedPackagesForDp = getArrayProperty(document, "excludedPackagesForDp");
+        allowedPackagesForDp = getArrayProperty(document, "allowedPackagesForDp");
         excludedPackagesForTraceCollect = getArrayProperty(document, "excludedPackagesForTraceCollect");
         externalExtensionClassNames = getArrayProperty(document, "externalExtensionClassNames");
         externalAssertExtensionClassNames = getArrayProperty(document, "externalAssertExtensionClassNames");
+        excludedThreadNames = getArrayProperty(document, "excludedThreadNames");
         Node objectDumpDirNode = document.selectSingleNode("/carpenterConfig/objectDumpDir");
         this.objectDumpDir = objectDumpDirNode != null ? objectDumpDirNode.getText() : null;
         if (this.objectDumpDir == null || this.objectDumpDir.equals("tmp")) {

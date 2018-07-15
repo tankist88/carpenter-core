@@ -1,12 +1,7 @@
 package org.carpenter.core.property;
 
-import org.dom4j.*;
-import org.dom4j.io.SAXReader;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +9,8 @@ import static org.testng.Assert.*;
 
 public class GenerationPropertiesFactoryTest {
     @Test
-    public void testLoadExcludedPackagesForDp() {
-        String[] arr = GenerationPropertiesFactory.loadProps().getExcludedPackagesForDp();
+    public void testLoadAllowedPackagesForDp() {
+        String[] arr = GenerationPropertiesFactory.loadProps().getAllowedPackagesForDp();
         assertNotEquals(arr.length, 0);
         List<String> controlValues = Arrays.asList(
                 "net",
