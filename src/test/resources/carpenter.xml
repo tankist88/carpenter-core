@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <carpenterConfig>
-    <utGenDir>C:\Users\tankist\AppData\Local\Temp\/ut_gen</utGenDir>
-    <objectDumpDir>C:\Users\tankist\AppData\Local\Temp\/trace_dump</objectDumpDir>
-    <dataProviderClassPattern>org.object2source.util.CommonDataProvider_</dataProviderClassPattern>
+    <utGenDir>tmp</utGenDir>
+    <objectDumpDir>tmp</objectDumpDir>
+    <dataProviderClassPattern>com.github.tankist88.object2source.util.CommonDataProvider_</dataProviderClassPattern>
     <allowedPackagesForTests>
-        <value>org.carpenter</value>
+        <value>com.github.tankist88.carpenter</value>
     </allowedPackagesForTests>
     <excludedPackagesForTraceCollect>
         <value>sun</value>
