@@ -27,6 +27,7 @@ public class MethodCallInfo extends MethodBaseInfo {
     private List<GeneratedArgument> arguments;
     private GeneratedArgument returnArg;
     private Set<MethodCallInfo> innerMethods;
+    private GeneratedArgument targetObj;
 
     public String getDeclaringTypeName() {
         return declaringTypeName;
@@ -135,6 +136,14 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.classHasZeroArgConstructor = classHasZeroArgConstructor;
     }
 
+    public GeneratedArgument getTargetObj() {
+        return targetObj;
+    }
+
+    public void setTargetObj(GeneratedArgument targetObj) {
+        this.targetObj = targetObj;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -170,6 +179,7 @@ public class MethodCallInfo extends MethodBaseInfo {
                 ", arguments=" + arguments +
                 ", returnArg=" + returnArg +
                 ", innerMethods=" + innerMethods +
+                ", targetObj=" + targetObj +
                 "} " + super.toString();
     }
 }
