@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 class FileGenerationProperties extends AbstractGenerationProperties {
@@ -16,12 +17,12 @@ class FileGenerationProperties extends AbstractGenerationProperties {
     public void loadProps(InputStream inputStream) throws Exception {
         Properties prop = new Properties();
         prop.load(inputStream);
-        this.utGenDir = prop.getProperty("ut.gen.dir");
-        if (StringUtils.isBlank(this.utGenDir) || this.utGenDir.equals("tmp")) {
-            this.utGenDir = System.getProperty("java.io.tmpdir") + "/ut_gen";
+        utGenDir = prop.getProperty("ut.gen.dir");
+        if (StringUtils.isBlank(utGenDir) || utGenDir.equals("tmp")) {
+            utGenDir = System.getProperty("java.io.tmpdir") + "/ut_gen";
         }
-        this.dataProviderClassPattern = prop.getProperty("data.providers.class.pattern");
-        if (StringUtils.isBlank(this.dataProviderClassPattern)) {
+        dataProviderClassPattern = prop.getProperty("data.providers.class.pattern");
+        if (StringUtils.isBlank(dataProviderClassPattern)) {
             this.dataProviderClassPattern = DEFAULT_DATA_PROVIDER_CLASS_PATTERN;
         }
         allowedPackagesForTests = getArrayProperty(prop, "test.generation.allowed.packages");
@@ -30,23 +31,29 @@ class FileGenerationProperties extends AbstractGenerationProperties {
         externalExtensionClassNames = getArrayProperty(prop, "external.extension.class.names");
         externalAssertExtensionClassNames = getArrayProperty(prop, "external.assert.extension.class.names");
         excludedThreadNames = getArrayProperty(prop, "excluded.thread.names");
-        this.objectDumpDir = (String) prop.get("object.dump.dir");
-        if (this.objectDumpDir == null || this.objectDumpDir.equals("tmp")) {
-            this.objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";
+        objectDumpDir = (String) prop.get("object.dump.dir");
+        if (objectDumpDir == null || objectDumpDir.equals("tmp")) {
+            objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";
+        }
+        String fillTestClassInstanceStr = (String) prop.get("fill.test.class.instance");
+        if (fillTestClassInstanceStr != null) {
+            fillTestClassInstance = Boolean.parseBoolean(fillTestClassInstanceStr);
+        }
+        String noZeroArgConstructorTestAllowedStr = (String) prop.get("no.zero.arg.constructor.test.allowed");
+        if (noZeroArgConstructorTestAllowedStr != null) {
+            noZeroArgConstructorTestAllowed = Boolean.parseBoolean(noZeroArgConstructorTestAllowedStr);
         }
     }
 
     private String[] getArrayProperty(Properties prop, String parameterName) {
         List<String> values = new ArrayList<>();
-        int i = 1;
-        while(true) {
-            String value = prop.getProperty(parameterName + "_" + i);
-            if(value != null) {
-                values.add(value.replaceAll(" ", "").trim());
-            } else {
-                break;
+        for (Map.Entry<Object, Object> entry : prop.entrySet()) {
+            String key = (String) entry.getKey();
+            if (!key.startsWith(parameterName)) continue;
+            String value = prop.getProperty(key);
+            if (value != null) {
+                values.add(value.replace(" ", "").trim());
             }
-            i++;
         }
         return values.toArray(new String[0]);
     }

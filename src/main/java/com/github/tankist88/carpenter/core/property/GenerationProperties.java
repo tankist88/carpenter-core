@@ -53,4 +53,15 @@ public interface GenerationProperties {
      * @return Array of thread names to be excluded by trace collector
      */
     String[] getExcludedThreadNames();
+
+    /**
+     * If true append to test method another method for fill test instance
+     * @return true - append fillinf method, false - not append filling method
+     */
+    boolean isFillTestClassInstance();
+    /**
+     * If true allow generation of classes withot zero argument constructor
+     * @return If true allow generation of classes withot zero argument constructor
+     */
+    boolean isNoZeroArgConstructorTestAllowed();
 }

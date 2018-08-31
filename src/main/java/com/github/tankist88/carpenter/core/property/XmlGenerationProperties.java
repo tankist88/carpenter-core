@@ -18,14 +18,14 @@ public class XmlGenerationProperties extends AbstractGenerationProperties {
         SAXReader reader = new SAXReader();
         Document document = reader.read(inputStream);
         Node utGenDirNode = document.selectSingleNode("/carpenterConfig/utGenDir");
-        this.utGenDir = utGenDirNode != null ? utGenDirNode.getText() : null;
-        if (StringUtils.isBlank(this.utGenDir) || this.utGenDir.equals("tmp")) {
-            this.utGenDir = System.getProperty("java.io.tmpdir") + "/ut_gen";
+        utGenDir = utGenDirNode != null ? utGenDirNode.getText() : null;
+        if (StringUtils.isBlank(utGenDir) || utGenDir.equals("tmp")) {
+            utGenDir = System.getProperty("java.io.tmpdir") + "/ut_gen";
         }
         Node dpcNode = document.selectSingleNode("/carpenterConfig/dataProviderClassPattern");
-        this.dataProviderClassPattern = dpcNode != null ? dpcNode.getText() : null;
-        if (StringUtils.isBlank(this.dataProviderClassPattern)) {
-            this.dataProviderClassPattern = DEFAULT_DATA_PROVIDER_CLASS_PATTERN;
+        dataProviderClassPattern = dpcNode != null ? dpcNode.getText() : null;
+        if (StringUtils.isBlank(dataProviderClassPattern)) {
+            dataProviderClassPattern = DEFAULT_DATA_PROVIDER_CLASS_PATTERN;
         }
         allowedPackagesForTests = getArrayProperty(document, "allowedPackagesForTests");
         allowedPackagesForDp = getArrayProperty(document, "allowedPackagesForDp");
@@ -34,9 +34,19 @@ public class XmlGenerationProperties extends AbstractGenerationProperties {
         externalAssertExtensionClassNames = getArrayProperty(document, "externalAssertExtensionClassNames");
         excludedThreadNames = getArrayProperty(document, "excludedThreadNames");
         Node objectDumpDirNode = document.selectSingleNode("/carpenterConfig/objectDumpDir");
-        this.objectDumpDir = objectDumpDirNode != null ? objectDumpDirNode.getText() : null;
-        if (this.objectDumpDir == null || this.objectDumpDir.equals("tmp")) {
-            this.objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";
+        objectDumpDir = objectDumpDirNode != null ? objectDumpDirNode.getText() : null;
+        if (objectDumpDir == null || objectDumpDir.equals("tmp")) {
+            objectDumpDir = System.getProperty("java.io.tmpdir") + "/trace_dump";
+        }
+        Node fillTestClassInstanceNode = document.selectSingleNode("/carpenterConfig/fillTestClassInstance");
+        String fillTestClassInstanceStr = fillTestClassInstanceNode != null ? fillTestClassInstanceNode.getText() : null;
+        if (fillTestClassInstanceStr != null) {
+            fillTestClassInstance = Boolean.parseBoolean(fillTestClassInstanceStr);
+        }
+        Node noZeroArgConstructorTestAllowedNode = document.selectSingleNode("/carpenterConfig/noZeroArgConstructorTestAllowed");
+        String noZeroArgConstructorTestAllowedStr = noZeroArgConstructorTestAllowedNode != null ? noZeroArgConstructorTestAllowedNode.getText() : null;
+        if (noZeroArgConstructorTestAllowedStr != null) {
+            noZeroArgConstructorTestAllowed = Boolean.parseBoolean(noZeroArgConstructorTestAllowedStr);
         }
     }
 

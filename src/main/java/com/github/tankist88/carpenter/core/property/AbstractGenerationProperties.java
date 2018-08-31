@@ -28,6 +28,8 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     String[] externalAssertExtensionClassNames;
     String[] excludedThreadNames;
     String objectDumpDir;
+    boolean fillTestClassInstance;
+    boolean noZeroArgConstructorTestAllowed;
 
     AbstractGenerationProperties() {
         this(null);
@@ -170,5 +172,13 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public String[] getExcludedThreadNames() {
         return excludedThreadNames;
+    }
+    @Override
+    public boolean isFillTestClassInstance() {
+        return fillTestClassInstance;
+    }
+    @Override
+    public boolean isNoZeroArgConstructorTestAllowed() {
+        return noZeroArgConstructorTestAllowed;
     }
 }
