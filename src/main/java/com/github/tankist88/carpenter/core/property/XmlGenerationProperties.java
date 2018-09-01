@@ -48,6 +48,20 @@ public class XmlGenerationProperties extends AbstractGenerationProperties {
         if (noZeroArgConstructorTestAllowedStr != null) {
             noZeroArgConstructorTestAllowed = Boolean.parseBoolean(noZeroArgConstructorTestAllowedStr);
         }
+        Node maxObjectDepthNode = document.selectSingleNode("/carpenterConfig/maxObjectDepth");
+        String maxObjectDepthStr = maxObjectDepthNode != null ? maxObjectDepthNode.getText() : null;
+        if (maxObjectDepthStr != null) {
+            maxObjectDepth = Integer.parseInt(maxObjectDepthStr);
+        } else {
+            maxObjectDepth = 10;
+        }
+        Node collectorThreadPoolSizeNode = document.selectSingleNode("/carpenterConfig/collectorThreadPoolSize");
+        String collectorThreadPoolSizeStr = collectorThreadPoolSizeNode != null ? collectorThreadPoolSizeNode.getText() : null;
+        if (collectorThreadPoolSizeStr != null) {
+            collectorThreadPoolSize = Integer.parseInt(collectorThreadPoolSizeStr);
+        } else {
+            collectorThreadPoolSize = 55;
+        }
     }
 
     private String[] getArrayProperty(Document document, String propName) {

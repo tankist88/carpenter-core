@@ -43,6 +43,18 @@ class FileGenerationProperties extends AbstractGenerationProperties {
         if (noZeroArgConstructorTestAllowedStr != null) {
             noZeroArgConstructorTestAllowed = Boolean.parseBoolean(noZeroArgConstructorTestAllowedStr);
         }
+        String maxObjectDepthStr = (String) prop.get("max.object.depth");
+        if (maxObjectDepthStr != null) {
+            maxObjectDepth = Integer.parseInt(maxObjectDepthStr);
+        } else {
+            maxObjectDepth = 10;
+        }
+        String collectorThreadPoolSizeStr = (String) prop.get("collector.thread.pool.size");
+        if (collectorThreadPoolSizeStr != null) {
+            collectorThreadPoolSize = Integer.parseInt(collectorThreadPoolSizeStr);
+        } else {
+            collectorThreadPoolSize = 55;
+        }
     }
 
     private String[] getArrayProperty(Properties prop, String parameterName) {

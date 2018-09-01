@@ -18,4 +18,6 @@
         <value>org.com.sun.b</value>
     </externalExtensionClassNames>
     <externalAssertExtensionClassNames/>
+    <maxObjectDepth>15</maxObjectDepth>
+    <collectorThreadPoolSize>70</collectorThreadPoolSize>
 </carpenterConfig>

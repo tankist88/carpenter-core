@@ -30,6 +30,8 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     String objectDumpDir;
     boolean fillTestClassInstance;
     boolean noZeroArgConstructorTestAllowed;
+    int maxObjectDepth;
+    int collectorThreadPoolSize;
 
     AbstractGenerationProperties() {
         this(null);
@@ -129,42 +131,34 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     public String getUtGenDir() {
         return utGenDir;
     }
-
     @Override
     public String getDataProviderClassPattern() {
         return dataProviderClassPattern;
     }
-
     @Override
     public String[] getAllowedPackagesForTests() {
         return allowedPackagesForTests;
     }
-
     @Override
     public String[] getAllowedPackagesForDp() {
         return allowedPackagesForDp;
     }
-
     @Override
     public String getObjectDumpDir() {
         return objectDumpDir;
     }
-
     @Override
     public String[] getExternalExtensionClassNames() {
         return externalExtensionClassNames;
     }
-
     @Override
     public String[] getAllowedClassesForTraceCollect() {
         return allowedClassesForTests;
     }
-
     @Override
     public String[] getExcludedPackagesForTraceCollect() {
         return excludedPackagesForTraceCollect;
     }
-
     @Override
     public String[] getExternalAssertExtensionClassNames() {
         return externalAssertExtensionClassNames;
@@ -180,5 +174,13 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public boolean isNoZeroArgConstructorTestAllowed() {
         return noZeroArgConstructorTestAllowed;
+    }
+    @Override
+    public int getMaxObjectDepth() {
+        return maxObjectDepth;
+    }
+    @Override
+    public int getCollectorThreadPoolSize() {
+        return collectorThreadPoolSize;
     }
 }

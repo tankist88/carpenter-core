@@ -5,12 +5,13 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.github.tankist88.carpenter.core.property.GenerationPropertiesFactory.loadProps;
 import static org.testng.Assert.*;
 
 public class GenerationPropertiesFactoryTest {
     @Test
     public void testLoadAllowedPackagesForDp() {
-        String[] arr = GenerationPropertiesFactory.loadProps().getAllowedPackagesForDp();
+        String[] arr = loadProps().getAllowedPackagesForDp();
         assertNotEquals(arr.length, 0);
         List<String> controlValues = Arrays.asList(
                 "net",
@@ -23,7 +24,7 @@ public class GenerationPropertiesFactoryTest {
 
     @Test
     public void testLoadAllowedPackagesForTests() {
-        String[] arr = GenerationPropertiesFactory.loadProps().getAllowedPackagesForTests();
+        String[] arr = loadProps().getAllowedPackagesForTests();
         assertNotEquals(arr.length, 0);
         List<String> controlValues = Arrays.asList(
                 "com.github.tankist88.carpenter",
@@ -55,7 +56,7 @@ public class GenerationPropertiesFactoryTest {
 
     @Test
     public void testLoadAllowedClassesForTraceCollect() {
-        String[] arr = GenerationPropertiesFactory.loadProps().getAllowedClassesForTraceCollect();
+        String[] arr = loadProps().getAllowedClassesForTraceCollect();
         assertNotEquals(arr.length, 0);
         List<String> controlValues = Arrays.asList(
                 "com.github.tankist88.carpenter.core.property.GenerationPropertiesFactoryTest",
@@ -87,7 +88,7 @@ public class GenerationPropertiesFactoryTest {
 
     @Test
     public void testExcludedPackagesForTraceCollect() {
-        String[] arr = GenerationPropertiesFactory.loadProps().getExcludedPackagesForTraceCollect();
+        String[] arr = loadProps().getExcludedPackagesForTraceCollect();
         assertNotEquals(arr.length, 0);
         List<String> controlValues = Arrays.asList(
                 "sun"
@@ -99,7 +100,17 @@ public class GenerationPropertiesFactoryTest {
 
     @Test
     public void testGetExternalExtensionClassNames() {
-        String[] classNames = GenerationPropertiesFactory.loadProps().getExternalExtensionClassNames();
+        String[] classNames = loadProps().getExternalExtensionClassNames();
         assertEquals(classNames, new String[] {"org.com.sun.a", "org.com.sun.b"});
+    }
+
+    @Test
+    public void testGetMaxObjectDepth() {
+        assertEquals(loadProps().getMaxObjectDepth(), 15);
+    }
+
+    @Test
+    public void testGetCollectorThreadPoolSize() {
+        assertEquals(loadProps().getCollectorThreadPoolSize(), 70);
     }
 }

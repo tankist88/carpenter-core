@@ -55,13 +55,24 @@ public interface GenerationProperties {
     String[] getExcludedThreadNames();
 
     /**
-     * If true append to test method another method for fill test instance
-     * @return true - append fillinf method, false - not append filling method
+     * If true append to start of test method another method for fill test instance
+     * @return true - append filling method, false - not append filling method
      */
     boolean isFillTestClassInstance();
     /**
-     * If true allow generation of classes withot zero argument constructor
-     * @return If true allow generation of classes withot zero argument constructor
+     * If true allow tests generation for classes without zero argument constructor
+     * @return true - allow tests generation for classes without zero argument constructor
      */
     boolean isNoZeroArgConstructorTestAllowed();
+    /**
+     * While generating data providers generator go down to object and his fields.
+     * This parameter determine maximum level of descent or depth of descent.
+     * @return maximum depth of descent on object fo generate data provider
+     */
+    int getMaxObjectDepth();
+    /**
+     * Return maximum thread pool size for carpenter-collector
+     * @return maximum thread pool size for carpenter-collector
+     */
+    int getCollectorThreadPoolSize();
 }
