@@ -20,7 +20,7 @@ public class TypeHelper {
         return classListAsString(getParameterizedTypes(field.getGenericType()));
     }
 
-    private static String classListAsString(List<Class> genericTypes) {
+    public static String classListAsString(List<Class> genericTypes) {
         if(genericTypes.size() > 0) {
             StringBuilder gTypeNameBuilder = new StringBuilder();
             Iterator iterator = genericTypes.iterator();

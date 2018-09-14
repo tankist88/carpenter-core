@@ -4,18 +4,18 @@ import com.github.tankist88.carpenter.core.dto.unit.field.FieldBaseInfo;
 import com.github.tankist88.carpenter.core.dto.unit.field.FieldProperties;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import static com.github.tankist88.object2source.util.GenerationUtil.*;
+import static java.lang.reflect.Modifier.*;
 
 
 public class ConvertUtil {
     public static FieldProperties toFieldProperties(Field field) {
-        if(field == null) return null;
+        if (field == null) return null;
         FieldProperties result = new FieldProperties();
         result.setClassName(field.getType().getName());
         result.setUnitName(field.getName());
@@ -31,13 +31,31 @@ public class ConvertUtil {
     }
 
     public static List<FieldProperties> toServiceProperties(List<Field> fields) {
-        if(fields == null) return null;
+        return getFieldProperties(fields, new Predicate() {
+            @Override
+            public boolean allowed(Field f) {
+                return allowedField(f);
+            }
+        });
+    }
+
+    public static List<FieldProperties> toNonStaticProperties(List<Field> fields) {
+        return getFieldProperties(fields, new Predicate() {
+            @Override
+            public boolean allowed(Field f) {
+                return !deniedModifier(f);
+            }
+        });
+    }
+
+    private static List<FieldProperties> getFieldProperties(List<Field> fields, Predicate predicate) {
+        if (fields == null) return null;
         List<FieldProperties> result = new ArrayList<>();
-        Set<FieldBaseInfo> serviceClasses = new HashSet<>();
-        for(Field f : fields) {
+        Set<FieldBaseInfo> fieldsSet = new HashSet<>();
+        for (Field f : fields) {
             FieldBaseInfo fieldBaseInfo = new FieldBaseInfo(f.getType().getName(), f.getName());
-            if (allowedField(f) && !serviceClasses.contains(fieldBaseInfo)) {
-                serviceClasses.add(fieldBaseInfo);
+            if (predicate.allowed(f) && !fieldsSet.contains(fieldBaseInfo)) {
+                fieldsSet.add(fieldBaseInfo);
                 result.add(toFieldProperties(f));
             }
         }
@@ -45,18 +63,25 @@ public class ConvertUtil {
     }
 
     public static boolean allowedField(Field f) {
-        boolean deniedModifier =
-                Modifier.isStatic(f.getModifiers()) ||
-                Modifier.isNative(f.getModifiers()) ||
-                Modifier.isPrivate(f.getType().getModifiers());
+        String tName = f.getType().getName();
         boolean deniedType =
-                isPrimitive(f.getType().getName()) ||
-                isWrapper(f.getType().getName()) ||
-                f.getType().getName().equals(Class.class.getName()) ||
-                f.getType().getName().equals(String.class.getName()) ||
-                f.getType().getName().startsWith("java") ||
+                isPrimitive(tName) ||
+                isWrapper(tName) ||
+                tName.equals(Class.class.getName()) ||
+                tName.equals(String.class.getName()) ||
+                tName.startsWith("java") ||
                 f.getType().isArray() ||
                 f.getType().isEnum();
-        return !deniedModifier && !deniedType;
+        return !deniedModifier(f) && !deniedType;
+    }
+
+    private static boolean deniedModifier(Field f) {
+        return  isStatic(f.getModifiers()) ||
+                isNative(f.getModifiers()) ||
+                isPrivate(f.getType().getModifiers());
+    }
+
+    private interface Predicate {
+        boolean allowed(Field f);
     }
 }

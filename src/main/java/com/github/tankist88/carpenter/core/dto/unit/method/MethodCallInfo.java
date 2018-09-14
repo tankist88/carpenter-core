@@ -18,7 +18,10 @@ public class MethodCallInfo extends MethodBaseInfo {
     private List<String> classHierarchy;
     private List<String> interfacesHierarchy;
     private List<FieldProperties> serviceFields;
+    private boolean maybeServiceClass;
     private boolean classHasZeroArgConstructor;
+    private String nearestInstantAbleClass;
+    private String genericString;
 
     // method attributes
     private int methodModifiers;
@@ -116,6 +119,14 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.serviceFields = serviceFields;
     }
 
+    public boolean isMaybeServiceClass() {
+        return maybeServiceClass;
+    }
+
+    public void setMaybeServiceClass(boolean maybeServiceClass) {
+        this.maybeServiceClass = maybeServiceClass;
+    }
+
     public void setInnerMethods(Set<MethodCallInfo> innerMethods) {
         this.innerMethods = innerMethods;
     }
@@ -136,12 +147,28 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.classHasZeroArgConstructor = classHasZeroArgConstructor;
     }
 
+    public String getNearestInstantAbleClass() {
+        return nearestInstantAbleClass;
+    }
+
+    public void setNearestInstantAbleClass(String nearestInstantAbleClass) {
+        this.nearestInstantAbleClass = nearestInstantAbleClass;
+    }
+
     public GeneratedArgument getTargetObj() {
         return targetObj;
     }
 
     public void setTargetObj(GeneratedArgument targetObj) {
         this.targetObj = targetObj;
+    }
+
+    public String getGenericString() {
+        return genericString;
+    }
+
+    public void setGenericString(String genericString) {
+        this.genericString = genericString;
     }
 
     @Override
