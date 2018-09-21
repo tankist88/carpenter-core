@@ -3,7 +3,6 @@ package com.github.tankist88.carpenter.core.dto.argument;
 import com.github.tankist88.object2source.dto.ProviderResult;
 
 import java.util.List;
-import java.util.Objects;
 
 public class GeneratedArgument extends AbstractArgument {
     private ProviderResult generated;
@@ -62,11 +61,11 @@ public class GeneratedArgument extends AbstractArgument {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GeneratedArgument that = (GeneratedArgument) o;
-        return Objects.equals(generated, that.generated);
+        return generated != null ? generated.equals(that.generated) : that.generated == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(generated);
+        return generated != null ? generated.hashCode() : 0;
     }
 }

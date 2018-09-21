@@ -1,7 +1,5 @@
 package com.github.tankist88.carpenter.core.dto.unit;
 
-import java.util.Objects;
-
 public abstract class ClassBaseInfo implements ClassInfo {
     private String className;
 
@@ -23,14 +21,14 @@ public abstract class ClassBaseInfo implements ClassInfo {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ClassBaseInfo)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         ClassBaseInfo that = (ClassBaseInfo) o;
-        return Objects.equals(getClassName(), that.getClassName());
+        return className != null ? className.equals(that.className) : that.className == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getClassName());
+        return className != null ? className.hashCode() : 0;
     }
 
     @Override

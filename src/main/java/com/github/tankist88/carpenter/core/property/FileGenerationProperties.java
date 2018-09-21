@@ -58,7 +58,7 @@ class FileGenerationProperties extends AbstractGenerationProperties {
     }
 
     private String[] getArrayProperty(Properties prop, String parameterName) {
-        List<String> values = new ArrayList<>();
+        List<String> values = new ArrayList<String>();
         for (Map.Entry<Object, Object> entry : prop.entrySet()) {
             String key = (String) entry.getKey();
             if (!key.startsWith(parameterName)) continue;

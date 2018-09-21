@@ -1,7 +1,6 @@
 package com.github.tankist88.carpenter.core.dto.trace;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class TraceAnalyzeDto implements Serializable {
     /** Caller method key */
@@ -30,14 +29,16 @@ public class TraceAnalyzeDto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TraceAnalyzeDto that = (TraceAnalyzeDto) o;
-        return Objects.equals(upLevelElementKey, that.upLevelElementKey) &&
-                Objects.equals(upLevelElementClassName, that.upLevelElementClassName);
+        if (upLevelElementKey != null ? !upLevelElementKey.equals(that.upLevelElementKey) : that.upLevelElementKey != null)
+            return false;
+        return upLevelElementClassName != null ? upLevelElementClassName.equals(that.upLevelElementClassName) : that.upLevelElementClassName == null;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(upLevelElementKey, upLevelElementClassName);
+        int result = upLevelElementKey != null ? upLevelElementKey.hashCode() : 0;
+        result = 31 * result + (upLevelElementClassName != null ? upLevelElementClassName.hashCode() : 0);
+        return result;
     }
 
     @Override

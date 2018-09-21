@@ -1,7 +1,5 @@
 package com.github.tankist88.carpenter.core.dto.unit;
 
-import java.util.Objects;
-
 public abstract class AbstractUnitBaseInfo extends ClassBaseInfo implements ClassInfo {
     private String unitName;
 
@@ -28,12 +26,14 @@ public abstract class AbstractUnitBaseInfo extends ClassBaseInfo implements Clas
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         AbstractUnitBaseInfo that = (AbstractUnitBaseInfo) o;
-        return Objects.equals(unitName, that.unitName);
+        return unitName != null ? unitName.equals(that.unitName) : that.unitName == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), unitName);
+        int result = super.hashCode();
+        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
+        return result;
     }
 
     @Override

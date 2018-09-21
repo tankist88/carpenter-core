@@ -5,7 +5,6 @@ import com.github.tankist88.carpenter.core.dto.unit.field.FieldProperties;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class MethodCallInfo extends MethodBaseInfo {
@@ -90,7 +89,7 @@ public class MethodCallInfo extends MethodBaseInfo {
 
     public Set<MethodCallInfo> getInnerMethods() {
         if(innerMethods == null) {
-            innerMethods = new HashSet<>();
+            innerMethods = new HashSet<MethodCallInfo>();
         }
         return innerMethods;
     }
@@ -174,20 +173,28 @@ public class MethodCallInfo extends MethodBaseInfo {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof MethodCallInfo)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         MethodCallInfo that = (MethodCallInfo) o;
-        return getMethodModifiers() == that.getMethodModifiers() &&
-                getClassModifiers() == that.getClassModifiers() &&
-                isVoidMethod() == that.isVoidMethod() &&
-                isMemberClass() == that.isMemberClass() &&
-                Objects.equals(getDeclaringTypeName(), that.getDeclaringTypeName()) &&
-                Objects.equals(getArguments(), that.getArguments());
+        if (classModifiers != that.classModifiers) return false;
+        if (methodModifiers != that.methodModifiers) return false;
+        if (isVoidMethod != that.isVoidMethod) return false;
+        if (isMemberClass != that.isMemberClass) return false;
+        if (declaringTypeName != null ? !declaringTypeName.equals(that.declaringTypeName) : that.declaringTypeName != null)
+            return false;
+        return arguments != null ? arguments.equals(that.arguments) : that.arguments == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getDeclaringTypeName(), getMethodModifiers(), getClassModifiers(), isVoidMethod(), isMemberClass(), getArguments());
+        int result = super.hashCode();
+        result = 31 * result + (declaringTypeName != null ? declaringTypeName.hashCode() : 0);
+        result = 31 * result + classModifiers;
+        result = 31 * result + methodModifiers;
+        result = 31 * result + (isVoidMethod ? 1 : 0);
+        result = 31 * result + (isMemberClass ? 1 : 0);
+        result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
+        return result;
     }
 
     @Override

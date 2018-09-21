@@ -2,8 +2,6 @@ package com.github.tankist88.carpenter.core.dto.unit.method;
 
 import com.github.tankist88.carpenter.core.dto.trace.TraceAnalyzeDto;
 
-import java.util.Objects;
-
 public class MethodCallTraceInfo extends MethodCallInfo {
     private TraceAnalyzeDto traceAnalyzeData;
     private String key;
@@ -30,13 +28,14 @@ public class MethodCallTraceInfo extends MethodCallInfo {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         MethodCallTraceInfo that = (MethodCallTraceInfo) o;
-        return Objects.equals(traceAnalyzeData, that.traceAnalyzeData);
+        return traceAnalyzeData != null ? traceAnalyzeData.equals(that.traceAnalyzeData) : that.traceAnalyzeData == null;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(super.hashCode(), traceAnalyzeData);
+        int result = super.hashCode();
+        result = 31 * result + (traceAnalyzeData != null ? traceAnalyzeData.hashCode() : 0);
+        return result;
     }
 
     @Override

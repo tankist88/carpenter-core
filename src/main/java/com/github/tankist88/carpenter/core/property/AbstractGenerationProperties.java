@@ -49,12 +49,12 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     public abstract void loadProps(InputStream inputStream) throws Exception;
 
     private void fillAllowedClassesForTests() throws IOException, ClassNotFoundException {
-        Set<String> allowedClassesForTraceCollect = new HashSet<>();
-        Set<String> allowedClassesForTestGeneration = new HashSet<>();
+        Set<String> allowedClassesForTraceCollect = new HashSet<String>();
+        Set<String> allowedClassesForTestGeneration = new HashSet<String>();
 
         for (String p : allowedPackagesForTests) {
             for(Class<?> clazz : getClasses(p)) {
-                List<String> classes = new ArrayList<>();
+                List<String> classes = new ArrayList<String>();
                 for(String cs : getClassHierarchyStr(clazz)) {
                     if (!cs.startsWith("java")) classes.add(cs);
                 }
@@ -91,12 +91,12 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
         assert classLoader != null;
         String path = packageName.replace('.', '/');
         Enumeration<URL> resources = classLoader.getResources(path);
-        List<File> dirs = new ArrayList<>();
+        List<File> dirs = new ArrayList<File>();
         while (resources.hasMoreElements()) {
             URL resource = resources.nextElement();
             dirs.add(new File(resource.getFile()));
         }
-        ArrayList<Class> classes = new ArrayList<>();
+        ArrayList<Class> classes = new ArrayList<Class>();
         for (File directory : dirs) {
             classes.addAll(findClasses(directory, packageName));
         }
@@ -111,7 +111,7 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
      * @throws ClassNotFoundException
      */
     private static List<Class> findClasses(File directory, String packageName) throws ClassNotFoundException {
-        List<Class> classes = new ArrayList<>();
+        List<Class> classes = new ArrayList<Class>();
         if (!directory.exists()) {
             return classes;
         }

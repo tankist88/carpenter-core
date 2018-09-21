@@ -50,8 +50,8 @@ public class ConvertUtil {
 
     private static List<FieldProperties> getFieldProperties(List<Field> fields, Predicate predicate) {
         if (fields == null) return null;
-        List<FieldProperties> result = new ArrayList<>();
-        Set<FieldBaseInfo> fieldsSet = new HashSet<>();
+        List<FieldProperties> result = new ArrayList<FieldProperties>();
+        Set<FieldBaseInfo> fieldsSet = new HashSet<FieldBaseInfo>();
         for (Field f : fields) {
             FieldBaseInfo fieldBaseInfo = new FieldBaseInfo(f.getType().getName(), f.getName());
             if (predicate.allowed(f) && !fieldsSet.contains(fieldBaseInfo)) {
