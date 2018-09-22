@@ -22,12 +22,10 @@ public class MethodCallInfo extends MethodBaseInfo {
     private String nearestInstantAbleClass;
     private String genericString;
     private boolean isMemberClass;
-    private boolean isAbstractClass;
 
     // method attributes
     private int methodModifiers;
     private boolean isVoidMethod;
-    private boolean isAbstractMethod;
     private List<GeneratedArgument> arguments;
     private GeneratedArgument returnArg;
     private Set<MethodCallInfo> innerMethods;
@@ -170,22 +168,6 @@ public class MethodCallInfo extends MethodBaseInfo {
 
     public void setGenericString(String genericString) {
         this.genericString = genericString;
-    }
-
-    public boolean isAbstractClass() {
-        return isAbstractClass;
-    }
-
-    public void setAbstractClass(boolean abstractClass) {
-        isAbstractClass = abstractClass;
-    }
-
-    public boolean isAbstractMethod() {
-        return isAbstractMethod;
-    }
-
-    public void setAbstractMethod(boolean abstractMethod) {
-        isAbstractMethod = abstractMethod;
     }
 
     @Override
