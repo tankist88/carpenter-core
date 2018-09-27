@@ -18,6 +18,7 @@ public class MethodCallInfo extends MethodBaseInfo {
     private List<String> interfacesHierarchy;
     private List<FieldProperties> serviceFields;
     private boolean maybeServiceClass;
+    private boolean dtoClass;
     private boolean classHasZeroArgConstructor;
     private String nearestInstantAbleClass;
     private String genericString;
@@ -126,6 +127,14 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.maybeServiceClass = maybeServiceClass;
     }
 
+    public boolean isDtoClass() {
+        return dtoClass;
+    }
+
+    public void setDtoClass(boolean dtoClass) {
+        this.dtoClass = dtoClass;
+    }
+
     public void setInnerMethods(Set<MethodCallInfo> innerMethods) {
         this.innerMethods = innerMethods;
     }
@@ -206,10 +215,14 @@ public class MethodCallInfo extends MethodBaseInfo {
                 ", classHierarchy=" + classHierarchy +
                 ", interfacesHierarchy=" + interfacesHierarchy +
                 ", serviceFields=" + serviceFields +
+                ", maybeServiceClass=" + maybeServiceClass +
+                ", dtoClass=" + dtoClass +
                 ", classHasZeroArgConstructor=" + classHasZeroArgConstructor +
+                ", nearestInstantAbleClass='" + nearestInstantAbleClass + '\'' +
+                ", genericString='" + genericString + '\'' +
+                ", isMemberClass=" + isMemberClass +
                 ", methodModifiers=" + methodModifiers +
                 ", isVoidMethod=" + isVoidMethod +
-                ", isMemberClass=" + isMemberClass +
                 ", arguments=" + arguments +
                 ", returnArg=" + returnArg +
                 ", innerMethods=" + innerMethods +
