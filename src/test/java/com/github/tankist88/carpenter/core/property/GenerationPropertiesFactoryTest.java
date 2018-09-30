@@ -29,6 +29,13 @@ public class GenerationPropertiesFactoryTest {
         List<String> controlValues = Arrays.asList(
                 "com.github.tankist88.carpenter",
                 "com.github.tankist88.carpenter.core.property.GenerationPropertiesFactoryTest",
+                "com.github.tankist88.carpenter.core.property.converter.BooleanConverter",
+                "com.github.tankist88.carpenter.core.property.converter.IntegerConverter",
+                "com.github.tankist88.carpenter.core.property.converter.StringConverter",
+                "com.github.tankist88.carpenter.core.property.converter.PropConverter",
+                "com.github.tankist88.carpenter.core.property.converter.UtGenConverter",
+                "com.github.tankist88.carpenter.core.property.converter.ObjectDumpConverter",
+                "com.github.tankist88.carpenter.core.util.PropertyUtils",
                 "com.github.tankist88.carpenter.core.property.AbstractGenerationProperties",
                 "com.github.tankist88.carpenter.core.dto.unit.method.MethodCallTraceInfo",
                 "com.github.tankist88.carpenter.core.property.FileGenerationProperties",
@@ -60,6 +67,12 @@ public class GenerationPropertiesFactoryTest {
         assertNotEquals(arr.length, 0);
         List<String> controlValues = Arrays.asList(
                 "com.github.tankist88.carpenter.core.property.GenerationPropertiesFactoryTest",
+                "com.github.tankist88.carpenter.core.property.converter.BooleanConverter",
+                "com.github.tankist88.carpenter.core.property.converter.IntegerConverter",
+                "com.github.tankist88.carpenter.core.property.converter.StringConverter",
+                "com.github.tankist88.carpenter.core.property.converter.PropConverter",
+                "com.github.tankist88.carpenter.core.property.converter.UtGenConverter",
+                "com.github.tankist88.carpenter.core.property.converter.ObjectDumpConverter",
                 "com.github.tankist88.object2source.dto.ProviderResult",
                 "com.github.tankist88.carpenter.core.property.AbstractGenerationProperties",
                 "com.github.tankist88.carpenter.core.dto.unit.method.MethodCallTraceInfo",
@@ -78,6 +91,7 @@ public class GenerationPropertiesFactoryTest {
                 "com.github.tankist88.carpenter.core.dto.unit.AbstractUnitBaseInfo",
                 "com.github.tankist88.carpenter.core.dto.unit.field.FieldProperties",
                 "com.github.tankist88.carpenter.core.util.ConvertUtil",
+                "com.github.tankist88.carpenter.core.util.PropertyUtils",
                 "com.github.tankist88.carpenter.core.dto.argument.AbstractArgument",
                 "com.github.tankist88.carpenter.core.dto.unit.ClassBaseInfo"
         );

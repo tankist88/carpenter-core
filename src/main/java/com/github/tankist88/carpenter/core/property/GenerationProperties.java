@@ -81,4 +81,16 @@ public interface GenerationProperties {
      * @return file encoding for generated tests
      */
     String getEncoding();
+
+    /**
+     * Use annotation Mockito style
+     * @return true - use annotation Mockito style, false - use mock methods
+     */
+    boolean isCreateMockFields();
+
+    /**
+     * Use PowerMock for static methods
+     * @return use PowerMock for static methods
+     */
+    boolean isUsePowermock();
 }
