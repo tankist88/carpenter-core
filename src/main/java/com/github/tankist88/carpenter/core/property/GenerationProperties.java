@@ -75,4 +75,10 @@ public interface GenerationProperties {
      * @return maximum thread pool size for carpenter-collector
      */
     int getCollectorThreadPoolSize();
+
+    /**
+     * Return file encoding for generated tests (UTF-8, windows-1251 ...)
+     * @return file encoding for generated tests
+     */
+    String getEncoding();
 }

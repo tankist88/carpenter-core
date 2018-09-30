@@ -55,6 +55,13 @@ public class XmlGenerationProperties extends AbstractGenerationProperties {
         } else {
             maxObjectDepth = 10;
         }
+        Node encodingNode = document.selectSingleNode("/carpenterConfig/encoding");
+        String encodingStr = encodingNode != null ? encodingNode.getText() : null;
+        if (encodingStr != null) {
+            encoding = encodingStr.trim().replace(" ", "");
+        } else {
+            encoding = DEFAULT_ENCODING;
+        }
         Node collectorThreadPoolSizeNode = document.selectSingleNode("/carpenterConfig/collectorThreadPoolSize");
         String collectorThreadPoolSizeStr = collectorThreadPoolSizeNode != null ? collectorThreadPoolSizeNode.getText() : null;
         if (collectorThreadPoolSizeStr != null) {

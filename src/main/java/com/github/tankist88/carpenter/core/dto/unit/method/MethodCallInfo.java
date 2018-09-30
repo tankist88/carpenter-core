@@ -23,6 +23,7 @@ public class MethodCallInfo extends MethodBaseInfo {
     private String nearestInstantAbleClass;
     private String genericString;
     private boolean isMemberClass;
+    private int classHashCode;
 
     // method attributes
     private int methodModifiers;
@@ -177,6 +178,14 @@ public class MethodCallInfo extends MethodBaseInfo {
 
     public void setGenericString(String genericString) {
         this.genericString = genericString;
+    }
+
+    public int getClassHashCode() {
+        return classHashCode;
+    }
+
+    public void setClassHashCode(int classHashCode) {
+        this.classHashCode = classHashCode;
     }
 
     @Override

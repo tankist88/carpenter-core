@@ -20,4 +20,5 @@
     <externalAssertExtensionClassNames/>
     <maxObjectDepth>15</maxObjectDepth>
     <collectorThreadPoolSize>70</collectorThreadPoolSize>
+    <encoding>windows-1251</encoding>
 </carpenterConfig>

@@ -10,6 +10,7 @@ public class GeneratedArgument extends AbstractArgument {
     private String genericString;
     private boolean anonymousClass;
     private String nearestInstantAbleClass;
+    private int classHashCode;
 
     public GeneratedArgument(String className, ProviderResult generated) {
         super(className);
@@ -54,6 +55,14 @@ public class GeneratedArgument extends AbstractArgument {
 
     public void setNearestInstantAbleClass(String nearestInstantAbleClass) {
         this.nearestInstantAbleClass = nearestInstantAbleClass;
+    }
+
+    public int getClassHashCode() {
+        return classHashCode;
+    }
+
+    public void setClassHashCode(int classHashCode) {
+        this.classHashCode = classHashCode;
     }
 
     @Override

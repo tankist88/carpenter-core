@@ -113,4 +113,9 @@ public class GenerationPropertiesFactoryTest {
     public void testGetCollectorThreadPoolSize() {
         assertEquals(loadProps().getCollectorThreadPoolSize(), 70);
     }
+
+    @Test
+    public void testGetEncoding() {
+        assertEquals(loadProps().getEncoding(), "windows-1251");
+    }
 }

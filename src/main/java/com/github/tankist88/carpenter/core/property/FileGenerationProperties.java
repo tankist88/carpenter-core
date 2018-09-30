@@ -49,6 +49,12 @@ class FileGenerationProperties extends AbstractGenerationProperties {
         } else {
             maxObjectDepth = 10;
         }
+        String encodingStr = (String) prop.get("encoding");
+        if (encodingStr != null) {
+            encoding = encodingStr.trim().replace(" ", "");
+        } else {
+            encoding = DEFAULT_ENCODING;
+        }
         String collectorThreadPoolSizeStr = (String) prop.get("collector.thread.pool.size");
         if (collectorThreadPoolSizeStr != null) {
             collectorThreadPoolSize = Integer.parseInt(collectorThreadPoolSizeStr);

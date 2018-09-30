@@ -12,6 +12,7 @@ import static com.github.tankist88.object2source.util.GenerationUtil.*;
 
 public abstract class AbstractGenerationProperties implements GenerationProperties {
     static final String DEFAULT_DATA_PROVIDER_CLASS_PATTERN = "org.carpenter.CommonDataProvider_";
+    static final String DEFAULT_ENCODING = "UTF-8";
 
     public static final String TAB = " " + " " + " " + " ";
     public static final String COMMON_UTIL_POSTFIX = "GUtil";
@@ -32,6 +33,7 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     boolean noZeroArgConstructorTestAllowed;
     int maxObjectDepth;
     int collectorThreadPoolSize;
+    String encoding;
 
     AbstractGenerationProperties() {
         this(null);
@@ -182,5 +184,9 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public int getCollectorThreadPoolSize() {
         return collectorThreadPoolSize;
+    }
+    @Override
+    public String getEncoding() {
+        return encoding;
     }
 }
