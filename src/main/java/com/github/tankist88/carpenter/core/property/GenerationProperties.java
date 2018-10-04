@@ -93,4 +93,10 @@ public interface GenerationProperties {
      * @return use PowerMock for static methods
      */
     boolean isUsePowermock();
+
+    /**
+     * Return target mockito version
+     * @return target mockito version
+     */
+    String getTargetMockitoVersion();
 }

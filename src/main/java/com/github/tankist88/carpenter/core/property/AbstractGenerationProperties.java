@@ -13,6 +13,7 @@ import static com.github.tankist88.object2source.util.GenerationUtil.*;
 public abstract class AbstractGenerationProperties implements GenerationProperties {
     static final String DEFAULT_DATA_PROVIDER_CLASS_PATTERN = "org.carpenter.CommonDataProvider_";
     static final String DEFAULT_ENCODING = "UTF-8";
+    static final String DEFAULT_MOCKITO_VERSION = "2.8.9";
     static final int DEFAULT_MAX_OBJECT_DEPTH = 10;
     static final int DEFAULT_THREAD_POOL_SIZE = 55;
 
@@ -39,6 +40,7 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     int maxObjectDepth;
     int collectorThreadPoolSize;
     String encoding;
+    String targetMockitoVersion;
 
     AbstractGenerationProperties() {
         this(null);
@@ -201,5 +203,9 @@ public abstract class AbstractGenerationProperties implements GenerationProperti
     @Override
     public boolean isUsePowermock() {
         return usePowermock;
+    }
+    @Override
+    public String getTargetMockitoVersion() {
+        return targetMockitoVersion;
     }
 }
