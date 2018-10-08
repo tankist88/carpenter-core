@@ -9,7 +9,8 @@ import java.util.Set;
 
 public class MethodCallInfo extends MethodBaseInfo {
     //common attributes
-    private long callTime;
+    private long startTime;
+    private long endTime;
 
     // class attributes
     private String declaringTypeName;
@@ -140,12 +141,20 @@ public class MethodCallInfo extends MethodBaseInfo {
         this.innerMethods = innerMethods;
     }
 
-    public long getCallTime() {
-        return callTime;
+    public long getStartTime() {
+        return startTime;
     }
 
-    public void setCallTime(long callTime) {
-        this.callTime = callTime;
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
     }
 
     public boolean isClassHasZeroArgConstructor() {
@@ -217,8 +226,9 @@ public class MethodCallInfo extends MethodBaseInfo {
 
     @Override
     public String toString() {
-        return "MethodCallInfo{" +
-                "callTime=" + callTime +
+        return super.toString() + " MethodCallInfo{" +
+                "startTime=" + startTime +
+                ", endTime=" + endTime +
                 ", declaringTypeName='" + declaringTypeName + '\'' +
                 ", classModifiers=" + classModifiers +
                 ", classHierarchy=" + classHierarchy +
@@ -230,12 +240,13 @@ public class MethodCallInfo extends MethodBaseInfo {
                 ", nearestInstantAbleClass='" + nearestInstantAbleClass + '\'' +
                 ", genericString='" + genericString + '\'' +
                 ", isMemberClass=" + isMemberClass +
+                ", classHashCode=" + classHashCode +
                 ", methodModifiers=" + methodModifiers +
                 ", isVoidMethod=" + isVoidMethod +
                 ", arguments=" + arguments +
                 ", returnArg=" + returnArg +
                 ", innerMethods=" + innerMethods +
                 ", targetObj=" + targetObj +
-                "} " + super.toString();
+                '}';
     }
 }
