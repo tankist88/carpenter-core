@@ -40,7 +40,8 @@ class FileGenerationProperties extends AbstractGenerationProperties {
         maxObjectDepth = getIntegerProperty(prop, "max.object.depth", DEFAULT_MAX_OBJECT_DEPTH);
         collectorThreadPoolSize = getIntegerProperty(prop, "collector.thread.pool.size", DEFAULT_THREAD_POOL_SIZE);
         encoding = getStringProperty(prop, "encoding", DEFAULT_ENCODING);
-        targetMockitoVersion = getStringProperty(prop, "target.mockito.version", DEFAULT_MOCKITO_VERSION);
+        maxByteArrayLength = getIntegerProperty(prop, "max.byte.array.length", DEFAULT_MAX_BYTE_ARRAY_LENGTH);
+        useNullValuesInArgumentMatchers = getBooleanProperty(prop, "use.null.values.in.argument.matchers", false);
     }
 
     private String[] getArrayProperty(Properties prop, String parameterName) {

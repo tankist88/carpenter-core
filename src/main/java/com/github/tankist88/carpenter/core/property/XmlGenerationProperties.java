@@ -40,7 +40,8 @@ public class XmlGenerationProperties extends AbstractGenerationProperties {
         maxObjectDepth = getIntegerProperty(document, "maxObjectDepth", DEFAULT_MAX_OBJECT_DEPTH);
         collectorThreadPoolSize = getIntegerProperty(document, "collectorThreadPoolSize", DEFAULT_THREAD_POOL_SIZE);
         encoding = getStringProperty(document, "encoding", DEFAULT_ENCODING);
-        targetMockitoVersion = getStringProperty(document, "targetMockitoVersion", DEFAULT_MOCKITO_VERSION);
+        maxByteArrayLength = getIntegerProperty(document, "maxByteArrayLength", DEFAULT_MAX_BYTE_ARRAY_LENGTH);
+        useNullValuesInArgumentMatchers = getBooleanProperty(document, "useNullValuesInArgumentMatchers", false);
     }
 
     private String[] getArrayProperty(Document document, String propName) {

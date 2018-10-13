@@ -95,8 +95,14 @@ public interface GenerationProperties {
     boolean isUsePowermock();
 
     /**
-     * Return target mockito version
-     * @return target mockito version
+     * Use null values in argument matchers
+     * @return use null values in argument matchers
      */
-    String getTargetMockitoVersion();
+    boolean isUseNullValuesInArgumentMatchers();
+
+    /**
+     * Return maximum byte array length
+     * @return maximum byte array length
+     */
+    int getMaxByteArrayLength();
 }
